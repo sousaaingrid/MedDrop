@@ -10,6 +10,9 @@ import { TipoCadastroComponent } from './components/tipo-cadastro/tipo-cadastro.
 import { CadastroMedicoComponent } from './components/cadastro-medico/cadastro-medico.component';
 import { CadastroFarmaciaComponent } from './components/cadastro-farmacia/cadastro-farmacia.component';
 import { CadastroClienteComponent } from './components/cadastro-cliente/cadastro-cliente.component';
+import { LoginComponent } from './components/login/login.component';
+import { AcompanhamentoComponent } from './components/acompanhamento/acompanhamento.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CadastroClienteComponent } from './components/cadastro-cliente/cadastro
     TipoCadastroComponent,
     CadastroMedicoComponent,
     CadastroFarmaciaComponent,
-    CadastroClienteComponent
+    CadastroClienteComponent,
+    LoginComponent,
+    AcompanhamentoComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
