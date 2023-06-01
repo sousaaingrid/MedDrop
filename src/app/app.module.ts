@@ -13,6 +13,8 @@ import { CadastroClienteComponent } from './components/cadastro-cliente/cadastro
 import { LoginComponent } from './components/login/login.component';
 import { AcompanhamentoComponent } from './components/acompanhamento/acompanhamento.component';
 import { MapComponent } from './components/map/map.component';
+import { SlideComponent } from './components/slide/slide.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MapComponent } from './components/map/map.component';
     CadastroClienteComponent,
     LoginComponent,
     AcompanhamentoComponent,
-    MapComponent
+    MapComponent,
+    SlideComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
