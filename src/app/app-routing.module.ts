@@ -10,6 +10,7 @@ import { AcompanhamentoComponent } from './components/acompanhamento/acompanhame
 import { TipoCadastroComponent } from './components/tipo-cadastro/tipo-cadastro.component';
 import { MapComponent } from './components/map/map.component';
 import { CardComponent } from './components/card/card.component';
+import { ProdutosComponent } from './components/produtos/produtos.component';
 
 const routes: Routes = [
   {path:"", redirectTo: "home", pathMatch:"full"},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"map", component: MapComponent},
   {path:"slide", component: SlideComponent},
   {path:"card", component: CardComponent},
+  {path:"produtos", component: ProdutosComponent},
   {path:"acompanhamento", component: AcompanhamentoComponent},
   {path:"tipo/cadastro", component: TipoCadastroComponent},
   {path:"cadastro/medico", component: CadastroMedicoComponent},

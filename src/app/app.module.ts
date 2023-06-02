@@ -15,6 +15,7 @@ import { AcompanhamentoComponent } from './components/acompanhamento/acompanhame
 import { MapComponent } from './components/map/map.component';
 import { SlideComponent } from './components/slide/slide.component';
 import { CardComponent } from './components/card/card.component';
+import { ProdutosComponent } from './components/produtos/produtos.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CardComponent } from './components/card/card.component';
     AcompanhamentoComponent,
     MapComponent,
     SlideComponent,
-    CardComponent
+    CardComponent,
+    ProdutosComponent
   ],
   imports: [
     BrowserModule,
