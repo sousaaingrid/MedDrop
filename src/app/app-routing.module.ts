@@ -11,6 +11,10 @@ import { TipoCadastroComponent } from './components/tipo-cadastro/tipo-cadastro.
 import { MapComponent } from './components/map/map.component';
 import { CardComponent } from './components/card/card.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { StripePaymentComponent } from './components/stripe-payment/stripe-payment.component';
+import { StripeFailureComponent } from './components/stripe-failure/stripe-failure.component';
+import { StripeSuccessComponent } from './components/stripe-success/stripe-success.component';
+import { StripeProductComponent } from './components/stripe-product/stripe-product.component';
 
 const routes: Routes = [
   {path:"", redirectTo: "home", pathMatch:"full"},
@@ -24,7 +28,12 @@ const routes: Routes = [
   {path:"tipo/cadastro", component: TipoCadastroComponent},
   {path:"cadastro/medico", component: CadastroMedicoComponent},
   {path:"cadastro/farmacia", component: CadastroFarmaciaComponent},
-  {path:"cadastro/cliente", component: CadastroClienteComponent}  
+  {path:"cadastro/cliente", component: CadastroClienteComponent},
+  {path:"pagamento", component: StripePaymentComponent},
+  {path:"falha", component: StripeFailureComponent},
+  {path:"sucesso", component: StripeSuccessComponent},
+  {path:"produto", component: StripeProductComponent},
+
 ];
 
 @NgModule({

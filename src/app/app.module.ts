@@ -16,6 +16,10 @@ import { MapComponent } from './components/map/map.component';
 import { SlideComponent } from './components/slide/slide.component';
 import { CardComponent } from './components/card/card.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { StripePaymentComponent } from './components/stripe-payment/stripe-payment.component';
+import { StripeProductComponent } from './components/stripe-product/stripe-product.component';
+import { StripeSuccessComponent } from './components/stripe-success/stripe-success.component';
+import { StripeFailureComponent } from './components/stripe-failure/stripe-failure.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
     MapComponent,
     SlideComponent,
     CardComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    StripePaymentComponent,
+    StripeProductComponent,
+    StripeSuccessComponent,
+    StripeFailureComponent
   ],
   imports: [
     BrowserModule,
