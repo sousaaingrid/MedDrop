@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background:#657DEB">
   <div class="container-fluid">
-      <a class="navbar-brand logo" href="#">
+      <a class="navbar-brand logo" routerLink="/home">
           <img  src="../../../assets/icons/farmacia-on-line.png" alt="" width="70">MEDDROP
         </a>
     
@@ -14,19 +14,23 @@
           <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/tipo/cadastro">Cadastro</a>
+          <a *ngIf="usuario != null" class="nav-link" href="/tipo/cadastro">Cadastro</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/produtos">Produtos</a>
+          <a *ngIf="usuario != null" class="nav-link" href="/produtos">Produtos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/acompanhamento"> Meus Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <button *ngIf="usuario != null" class="nav-link" (click)="logout()" style="background: transparent; border: none;">Logout</button>
         </li>
         
       </ul> 
       
           <div class="nav-item">
-              <a class=" d-flex nav-link" routerLink="/login">Login</a>
+              <a *ngIf="usuario == null" class=" d-flex nav-link" routerLink="/">Login</a>
+              <a *ngIf="usuario != null" class=" d-flex nav-link" routerLink="/#">{{usuario.nome}}</a>
             </div>
             <div class="nav-item">
               <img class="sizeavatar" src="../../../assets/icons/do-utilizador.png">

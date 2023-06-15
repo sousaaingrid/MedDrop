@@ -11,13 +11,14 @@
 </head>
 <body>
     <main class="cards">
-        <section class="card contact">
+        <section class="card contact" *ngFor="let produto of produtos">
             <div class="icon">
                 <img src="../assets/img/exemplo-remedio.jpg" alt="Contato">
             </div>
-            <h3>Dipirona Monoidratada</h3>
-            <span>500mg 20 comprimidos</span>
-            <button>Comprar</button>
+            <h3>{{produto.nome}}</h3>
+            <span>{{produto.descricao}}</span>
+            <p>{{produto.valor | currency : 'BRL'}}</p>
+            <button (click)="checkout(produto)">Comprar</button>
         </section>
       </main>
   </body>

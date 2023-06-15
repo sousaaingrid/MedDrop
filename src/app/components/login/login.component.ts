@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -9,6 +10,14 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+
+export interface Usuario {
+  id: string,
+	nome: string,
+  email: string,
+  token: string
+}
 
 @Component({
   selector: 'app-login',
@@ -16,12 +25,10 @@ import {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-   // *
-  // * O "email" e "senha" serão preenchidos pelo usuário.
-  // *
-  // * O "recaptcha" será retornado pelo Google assim
-  // * que o usuário resolver o CAPTCHA
-  // *
+
+  usuario: Usuario
+  token: string
+
   form: FormGroup = new FormGroup({
     email: new FormControl(null, [
       Validators.email,
@@ -34,40 +41,25 @@ export class LoginComponent {
   @ViewChild('divRecaptcha')
   divRecaptcha!: ElementRef<HTMLDivElement>;
 
-  // *
-  // * Quando adicionamos o script do reCAPTCHA no
-  // * index.html, o script cria uma variável de
-  // * escopo global chamada "grecaptcha".
-  // * Então para pegar sua referência podemos
-  // * acessá-la através do "window"
-  // *
+
   get grecaptcha(): any {
     const w = window as any;
     return w['grecaptcha'];
   }
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone, private http: HttpClient, private router: Router) {
     this.renderizarReCaptcha();
   }
 
+  ngOnInit(): void {
+
+  }
+
+
   renderizarReCaptcha() {
-    // *
-    // * Para evitar que change detection seja disparado
-    // * cada vez que o setTimeout for executado,
-    // * executamos essa recorrência fora da zona
-    // * do Angular, por isso o usamos o runOutsideAngular
-    // *
-    // * Para saber mais sobre change detection:
-    // * https://consolelog.com.br/como-funciona-change-detection-angular/
-    // * 
+
     this.ngZone.runOutsideAngular(() => {
-      // *
-      // * Se o "grecaptcha" ainda não foi carregado ou
-      // * o elemento <div> onde o reCAPTCHA será
-      // * renderizado ainda não foi construído,
-      // * aguardamos algum tempo e executamos novamente
-      // * este método:
-      // *
+
       if (!this.grecaptcha || !this.divRecaptcha) {
         setTimeout(() => {
           this.renderizarReCaptcha();
@@ -76,17 +68,14 @@ export class LoginComponent {
         return;
       }
 
-      // * Se chegou aqui é porque o recaptcha já está
-      // * carregado. Então solicitamos sua renderização
-      // * na tela.
+
       const idElemento =
         this.divRecaptcha.nativeElement.getAttribute('id');
 
       this.grecaptcha.render(idElemento, {
         sitekey: '6LdXaJ8mAAAAADWFzBeLYBBE-bFGjCSiibBBoxpF',
         callback: (response: string) => {
-          // * Este método é chamado quando o usuário
-          // * resolver o desafio do CAPTCHA
+
           this.ngZone.run(() => {
             this.form.get('recaptcha')?.setValue(response);
           });
@@ -97,6 +86,14 @@ export class LoginComponent {
 
   login() {
     console.log(this.form.value);
+    const body = {email :this.form.value.email, senha: this.form.value.senha}
+    this.http.post('http://localhost:3080/paciente/v1/login', body).subscribe((data: Usuario)=>{
+      this.token=data.token
+      console.log(data)
+      localStorage.setItem("profile", JSON.stringify(data))
+      this.router.navigate(["/produtos"])
+    }
+    )
   }
 
 }

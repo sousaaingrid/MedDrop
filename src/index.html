@@ -13,13 +13,29 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
-</head>
-<body>
-  <app-root></app-root>
-  <script
+
+    <script
   src="https://www.google.com/recaptcha/api.js?render=explicit"
   async
   defer
 ></script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <app-root></app-root>
+    
+    <script>
+      function handleCredentialResponse(response) {
+        console.log(response)
+      }
+
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id: '369703697342-lnigbpqt2n7qrrsv73p5j3rl4kcnv3o5.apps.googleusercontent.com',
+          callback: handleCredentialResponse
+        });
+      };
+    </script>
 </body>
 </html>

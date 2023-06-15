@@ -17,9 +17,10 @@ import { StripeSuccessComponent } from './components/stripe-success/stripe-succe
 import { StripeProductComponent } from './components/stripe-product/stripe-product.component';
 
 const routes: Routes = [
-  {path:"", redirectTo: "home", pathMatch:"full"},
+// rota em branco por conta da configuração do Google Oauth ID Client
+
+  {path: "", component: LoginComponent, pathMatch:"full"},
   {path:"home", component: HomeComponent},
-  {path:"login", component: LoginComponent},
   {path:"map", component: MapComponent},
   {path:"slide", component: SlideComponent},
   {path:"card", component: CardComponent},
